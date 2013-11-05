@@ -1,0 +1,49 @@
+#!/usr/bin/env perl
+# Compiles a conkyrc file with location directives, e.g.:
+#
+#   @0,0  ${cpubar cpu1 4,140}
+#   @0,50 ${cpubar cpu2 4,140}
+#
+# All other lines are left alone, though the current vertical offset is tracked
+# throughout (modulo explicit voffset commands, which aren't parsed).
+
+use strict;
+use warnings;
+use List::Util qw/max/;
+
+my $dpi     = $ENV{DPI}          // 96;
+my $spacing = $ENV{LINE_SPACING} // 1.2;
+
+my $y_offset       = 0;
+my $x_offset       = 0;
+my $last_font_size = 0;
+
+while (<>) {
+  $last_font_size = 0 if /^\$\{font/;
+  my @font_size_changes = /\$\{font [^:]+:size=(\d+)\}/g;
+  my $max_font_size     = max $last_font_size, @font_size_changes;
+  my $line_height       = int($max_font_size * $dpi / 72 * $spacing);
+
+  $last_font_size = $font_size_changes[-1] || $last_font_size;
+
+  if (/@\+?-?\d+,\+?-?\d+/) {
+    while (/\G([^@]*)@(\+?-?\d+),(\+?-?\d+)\h*([^@]*)/g) {
+      my ($pre, $x, $y, $stuff) = ($1, $2, $3, $4);
+      my $x_rel = $x =~ s/^\+//;
+      my $y_rel = $y =~ s/^\+//;
+
+      $x += $x_rel ? $x_offset : 0;
+      $y -= $y_rel ? 0 : $y_offset;
+
+      print $pre, ($y ? "\${voffset $y}" : ''),
+                  "\${goto 0}\${offset $x}$stuff";
+      $x_offset  = $x;
+      $y_offset += $y;
+    }
+  } else {
+    print;
+  }
+
+  # Undo Conky line height adjustment; all positioning should be manual.
+  print "\${voffset -$line_height}" if $line_height;
+}
