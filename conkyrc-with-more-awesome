@@ -1,0 +1,130 @@
+# vim: set tw=1000 :
+
+use_xft yes
+xftalpha 0.8
+text_buffer_size 2048
+
+temperature_unit fahrenheit
+update_interval 1
+update_interval_on_battery 4
+total_run_times 0
+
+own_window yes
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent no
+own_window_type override
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+double_buffer yes
+
+if_up_strictness link
+
+minimum_size 280 50
+maximum_width 1020
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_width 1
+
+default_graph_size 290 8
+
+draw_graph_borders no
+short_units yes
+
+alignment bottom_right
+
+gap_x 64
+gap_y -154
+
+no_buffers yes
+
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+use_spacer none
+
+TEXT
+${font Ubuntu:size=12}${color 303030}
+@263,100 ${cpubar cpu1 4,122}  @+126,+0 ${cpubar cpu2 4,122}  @+126,+7  ${swapbar 4,80} @+-63,+7 ${color 303030}${membar 4,395}${color 303030}
+@263,107 ${cpubar cpu3 4,122}  @+126,+0 ${cpubar cpu4 4,122}  @+126,+0 @+84,+0 ${wireless_link_bar 4,80 wlan0}
+
+${font Ubuntu:size=14}${color 606060}
+@348,100 @+168,+-54 @+168,+0 @+168,+0 @+42,+0 ${color 303030}  // ${color c0c0c0} ${time %H%M}
+
+${font Ubuntu:size=7}
+@0,81    @+0,+-36 ${color 303030}${loadgraph 8,386}
+@+1,+8   ${battery_bar 4,384}
+@0,+10   ${time %Y} ${color 303030} // ${color 606060} ${time %m%d}
+@263,+0  ${freq cpu1}
+
+@348,100 @+168,+-54 @+168,+0 ${color 606060}${uptime_short}${color 606060}
+         @+0,+9              ${fs_free /}
+         @+0,+9              ${color 303030}${loadavg 1}
+         @+0,+9              ${loadavg 2}
+         @+0,+9              ${loadavg 3}
+         @+108,+-18          ${top name 1}
+         @+0,+9              ${top name 2}
+         @+0,+9              ${top name 3}
+         @+0,+9              ${top name 4}
+         @+-29,+-27          ${top cpu 1}
+         @+0,+9              ${top cpu 2}
+         @+0,+9              ${top cpu 3}
+         @+0,+9              ${top cpu 4}
+         @+-40,+-27          ${top mem 1}
+         @+0,+9              ${top mem 2}
+         @+0,+9              ${top mem 3}
+         @+0,+9              ${top mem 4}
+
+@263,111
+@+126,+0 ${execi 5 ls ~/.cd/mountpoints | wc -l} ${execi 5 ~/bin/alerts | wc -l} ${execi 5 wc -l < ~/r/persistent/self/queue}
+
+@263,100
+@+0,+-9
+@+0,+-9 ${color c0c0c0}${exec cat /sys/class/backlight/intel*/brightness}${color 606060}
+
+${color c0c0c0}
+@+0,+-9
+@+0,+-9 ${tcp_portmon 22 22 rip 0}
+@+0,+-9 ${tcp_portmon 22 22 rip 1}
+@+0,+-9 ${tcp_portmon 22 22 rip 2}
+@+0,+-9 ${tcp_portmon 22 22 rip 3}
+${color 303030}
+
+@263,100
+@+126,+-9
+@+0,+-9 ${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/power_now} mW ${color 606060}
+@+0,+-9 ${execi 5 sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_now} mWh
+
+@+126,100
+@+0,+-9  ${color c0c0c0}${wireless_essid wlan0}${color 606060} ${wireless_bitrate wlan0}
+@+0,+-9  ${color c0c0c0}${addr wlan0}${color 606060}
+@+0,+-9  ${nameserver 0}
+@+0,+-9  ${gw_ip}
+@+0,+-18 ${color c0c0c0}@+-64,+-1${memgraph 8,228}@+64,+1${color 606060}
+
+@+84,100
+@+0,+-9
+@+0,+-9  ${color c0c0c0}${addr eth0}${color 606060}
+@+0,+-9  ${nameserver 1}
+@+0,+-9  ${nameserver 2}
+@+0,+-30 ${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
+
+@+84,45 @+42,+0 ${color c0c0c0}${cpugraph cpu0 8,164} @+-126,+0
+
+@+-42,100 ${color 303030}
+@+0,+22   ${diskiograph_read  /dev/sda 8,122} ${color 606060} @+126,+0 ${diskio_read  /dev/sda} @+-126,+0 ${color 303030}
+@+0,+11   ${diskiograph_write /dev/sda 8,122} ${color 606060} @+126,+0 ${diskio_write /dev/sda} @+-126,+0 ${color 303030}
+
+@+126,+0
+@+0,+11 ${execi 5 amixer get Master | tail -n1 | sed 's/.*\[\([0-9]\+\)%.*/\1/g'}%
+@+0,+11 ${execi 5 sed 's/000$//' /sys/class/thermal/thermal_zone0/temp}C
+@+-126,+-22
+
+@+168,+-11 ${downspeedgraph wlan0 8,123} ${color 606060} @+126,+0 ${downspeed wlan0} @+42,+0 ${totaldown wlan0} @+-168,+0 ${color 303030}
+@+0,+11    ${upspeedgraph   wlan0 8,123} ${color 606060} @+126,+0 ${upspeed   wlan0} @+42,+0 ${totalup   wlan0} @+-168,+0 ${color 303030}
+@+42,+11   ${color 303030}${audacious_bar 4,80} @+85,+0 ${audacious_bitrate}
