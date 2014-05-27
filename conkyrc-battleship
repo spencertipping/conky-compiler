@@ -1,0 +1,141 @@
+# vim: set tw=1000 :
+
+use_xft yes
+xftalpha 0.8
+text_buffer_size 2048
+
+temperature_unit fahrenheit
+update_interval 1
+update_interval_on_battery 4
+total_run_times 0
+
+own_window yes
+own_window_argb_visual no
+own_window_argb_value 0
+own_window_transparent yes
+own_window_type override
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+double_buffer yes
+
+if_up_strictness link
+
+minimum_size 280 50
+maximum_width 1020
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_width 0
+draw_graph_borders no
+
+default_bar_size   96  16
+default_graph_size 160 24
+
+short_units yes
+
+# Dual monitors
+#alignment bottom_middle
+#gap_x 500
+#gap_y -150
+
+# Laptop display
+alignment bottom_right
+gap_x 50
+gap_y -320
+
+no_buffers yes
+
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+use_spacer none
+
+TEXT
+${font Ubuntu:size=8}
+
+# Power display
+@0,133 ${color aaa}${execgraph perl -pe '$_ /= 50000' /sys/class/power_supply/BAT0/current_now}
+  @+0,+8    ${color fff}${battery_time}
+  @+88,+-1  ${color fff}${execi 5 sed 's/000$//' /sys/class/power_supply/[Bb]*/current_now} ${color aaa}mW draw
+  @+-88,+16 ${battery_bar 8,80}
+  @+88,+-1  ${color fff}${execi 5 sed 's/000$//' /sys/class/power_supply/[Bb]*/charge_now} ${color aaa}mWh now
+  @+0,+16   ${color ccc}${execi 60 sed 's/000//'  /sys/class/power_supply/[Bb]*/charge_full} ${color aaa}mWh full
+  @+0,+16   ${color ccc}${execi 60 sed 's/000//'  /sys/class/power_supply/[Bb]*/charge_full_design} ${color aaa}mWh spec
+
+# Network display
+@172,80     ${color aaa}${upspeedgraph wlan0 24,160}
+  @+0,+8    ${downspeedgraph wlan0 24,160}
+  @+1,+8    ${color fff}${upspeed wlan0} ${color aaa}up
+  @+88,+-1   ${color fff}${downspeed wlan0} ${color aaa}down
+  @+-88,+16 ${color aaa}${wireless_link_bar 8,80 wlan0}
+  @+88,+-1  ${color fff}${wireless_bitrate wlan0} ${color aaa}link
+  @+-88,+16 ${color fff}${addr wlan0}
+  @+88,+-1  ${color fff}${gw_ip}
+  @+0,+16   ${color fff}${wireless_essid wlan0}
+
+# Disk display
+@344,34 ${color aaa}${diskiograph_read 24,160}
+  @+0,+8 ${diskiograph_write 24,160}
+  @+1,+8   ${color fff}
+  @+0,+0    ${top_io io_read 1}
+  @+0,+16   ${top_io io_read 2}
+  @+0,+16   ${top_io io_read 3}
+  @+0,+16   ${top_io io_read 4}
+  @+40,+-53 ${top_io io_write 1}
+  @+0,+16   ${top_io io_write 2}
+  @+0,+16   ${top_io io_write 3}
+  @+0,+16   ${top_io io_write 4}
+  @+32,+-53 ${color ccc}
+  @+0,+0    ${top_io name 1}
+  @+0,+16   ${top_io name 2}
+  @+0,+16   ${top_io name 3}
+  @+0,+16   ${top_io name 4}
+
+# Memory display
+@516,-25
+  @+0,+8    ${color fff}${memmax} ${color aaa}total
+  @+72,+0   ${color aaa}${membar 8,88}
+  @+-72,+14 ${color fff}${mem} ${color aaa}used
+  @+72,+-1  ${color fff}${memeasyfree} ${color aaa}buf / cache
+  @+-72,+13 ${color aaa}${memgraph 24,160}
+  @+-3,+8   ${color fff}
+  @+0,+0    ${top_mem mem 1}
+  @+0,+16   ${top_mem mem 2}
+  @+0,+16   ${top_mem mem 3}
+  @+0,+16   ${top_mem mem 4}
+  @+36,+-53 ${color ccc}
+  @+0,+0    ${top_mem mem_res 1}
+  @+0,+16   ${top_mem mem_res 2}
+  @+0,+16   ${top_mem mem_res 3}
+  @+0,+16   ${top_mem mem_res 4}
+  @+40,+-54 ${color ccc}
+  @+0,+0    ${top_mem name 1}
+  @+0,+16   ${top_mem name 2}
+  @+0,+16   ${top_mem name 3}
+  @+0,+16   ${top_mem name 4}
+
+# CPU display
+@688,-20 ${color aaa}${cpugraph cpu0 24,160}
+  @+168,+-24  ${color 999999}
+  @+0,+0      ${cpu cpu1}
+  @+16,+-1    ${cpu cpu2}
+  @+-16,+12   ${cpu cpu3}
+  @+16,+-1    ${cpu cpu4}
+  @+-186,+16  ${color fff}
+  @+0,+0      ${top cpu 1}
+  @+0,+16     ${top cpu 2}
+  @+0,+16     ${top cpu 3}
+  @+0,+16     ${top cpu 4}
+  @+32,+-53   ${color ccc}
+  @+0,+0      ${top name 1}
+  @+0,+16     ${top name 2}
+  @+0,+16     ${top name 3}
+  @+0,+16     ${top name 4}
+
+# Host
+@688,-81 ${font Ubuntu:size=22}${color E2944A}λ. ${color aaa}${nodename_short}
+@784,-116 ${color ccc}${font Ubuntu:size=9}// ${color aaa}${time %Y-%m-%d} ${color fff}${time %H%M}
