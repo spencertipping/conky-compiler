@@ -60,7 +60,7 @@ ${font Ubuntu:size=7}
 @0,81    @+0,+-36 ${color 303030}${loadgraph 8,386}
 @+1,+8   ${battery_bar 4,384}
 @0,+10   ${time %Y} ${color 303030} // ${color 606060} ${time %m%d}
-@263,+0  ${freq cpu1}
+@263,+0  ${freq cpu1} ${color 303030} // ${color 606060} ${desktop}
 
 @348,100 @+168,+-54 @+168,+0 ${color 606060}${uptime_short}${color 606060}
          @+0,+9              ${fs_free /}
@@ -95,7 +95,7 @@ ${color 303030}
 @263,100
 @+126,+-9
 @+0,+-9 ${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/power_now} mW ${color 606060}
-@+0,+-9 ${execi 5 sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_now} mWh
+@+0,+-9 ${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_now}${color 303030} / ${color 606060}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_full} mWh
 
 @+126,100
 @+0,+-9  ${color c0c0c0}${wireless_essid wlan0}${color 606060} ${wireless_bitrate wlan0}
