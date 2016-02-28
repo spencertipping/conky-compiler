@@ -106,7 +106,7 @@ ${color 303030}
 
 @+84,100
 @+0,+-9
-@+0,+-9  ${color c0c0c0}${execi 10 timeout 5 curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'}${color 606060}
+@+0,+-9  ${color c0c0c0}${execi 10 timeout 5 curl -s spencertipping.com/ip.php}${color 606060}
 @+0,+-9  ${nameserver 1}
 @+0,+-9  ${nameserver 2}
 @+0,+-30 ${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
