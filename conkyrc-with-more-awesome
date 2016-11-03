@@ -36,7 +36,7 @@ short_units yes
 alignment bottom_right
 
 gap_x 0
-gap_y -144
+gap_y -112
 
 no_buffers yes
 
@@ -109,7 +109,7 @@ ${color 303030}
 @+0,+-9  ${color c0c0c0}${execi 10 timeout 5 curl -s spencertipping.com/ip.php}${color 606060}
 @+0,+-9  ${nameserver 1}
 @+0,+-9  ${nameserver 2}
-@+0,+-30 ${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
+@+0,+-30
 
 @+84,45 @+42,+0 ${color c0c0c0}${cpugraph cpu0 8,164} @+-126,+0
 
@@ -127,7 +127,6 @@ ${color 303030}
 
 @+168,+-11 ${downspeedgraph wlan0 8,123} ${color 606060} @+126,+0 ${downspeed wlan0} @+42,+0 ${totaldown wlan0} @+-168,+0 ${color 303030}
 @+0,+11    ${upspeedgraph   wlan0 8,123} ${color 606060} @+126,+0 ${upspeed   wlan0} @+42,+0 ${totalup   wlan0} @+-168,+0 ${color 303030}
-@+42,+11   ${color 303030}${audacious_bar 4,80} @+85,+0 ${audacious_bitrate}
 
 @263,111
 @+126,+0 ${font Ubuntu:size=7}${execi 5 wc -l < ~/r/persistent/self/queue}${font Ubuntu:size=14} ${execi 5 ls ~/.cd/mountpoints | wc -l} ${font Ubuntu:size=22}${execi 5 ~/bin/alerts | wc -l}

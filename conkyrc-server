@@ -1,0 +1,59 @@
+# vim: set tw=1000 :
+
+use_xft yes
+xftalpha 0.8
+text_buffer_size 2048
+
+temperature_unit fahrenheit
+update_interval 1
+update_interval_on_battery 4
+total_run_times 0
+
+own_window yes
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent no
+own_window_type override
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+double_buffer yes
+
+if_up_strictness link
+
+minimum_size 280 50
+maximum_width 1366
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_width 1
+
+default_graph_size 290 8
+
+draw_graph_borders no
+short_units yes
+
+alignment bottom_right
+
+gap_x 0
+gap_y 144
+
+no_buffers yes
+
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+use_spacer none
+
+TEXT
+${font Ubuntu:size=12}${color 303030}
+@680,72 ${cpubar cpu1 3,88} @+92,+0 ${cpubar cpu2 3,88} @+92,+0 ${cpubar cpu3 3,88} @+92,+0 ${cpubar cpu4 3,88} @+92,+0 ${cpubar cpu5 3,88} @+92,+0 ${cpubar cpu6 3,88}
+@680,77 ${cpubar cpu7 3,88} @+92,+0 ${cpubar cpu8 3,88} @+92,+0 ${cpubar cpu9 3,88} @+92,+0 ${cpubar cpu10 3,88} @+92,+0 ${cpubar cpu11 3,88} @+92,+0 ${cpubar cpu12 3,88}
+@680,82 ${cpubar cpu13 3,88} @+92,+0 ${cpubar cpu14 3,88} @+92,+0 ${cpubar cpu15 3,88} @+92,+0 ${cpubar cpu16 3,88} @+92,+0 ${cpubar cpu17 3,88} @+92,+0 ${cpubar cpu18 3,88}
+@680,87 ${cpubar cpu19 3,88} @+92,+0 ${cpubar cpu20 3,88} @+92,+0 ${cpubar cpu21 3,88} @+92,+0 ${cpubar cpu22 3,88} @+92,+0 ${cpubar cpu23 3,88} @+92,+0 ${cpubar cpu24 3,88}
+
+@772,62 ${color 606060}${membar 3,456}
+@772,67 ${color 606060}${swapbar 3,456}
