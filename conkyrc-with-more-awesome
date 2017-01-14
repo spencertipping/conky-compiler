@@ -36,7 +36,7 @@ short_units yes
 alignment bottom_right
 
 gap_x 0
-gap_y -112
+gap_y -180
 
 no_buffers yes
 
@@ -54,7 +54,7 @@ ${font Ubuntu:size=12}${color 303030}
 @263,107 ${cpubar cpu3 4,122}  @+126,+0 ${cpubar cpu4 4,122}  @+126,+0 @+84,+0 ${wireless_link_bar 4,80 wlan0}
 
 ${font Ubuntu:size=14}${color 606060}
-@348,100 @+168,+-54 @+168,+0 @+168,+0 @+42,+0 ${color 303030}  // ${color c0c0c0} ${time %H%M}
+@348,100 @+168,+-54 @+168,+0 @+168,+0 @+42,+12 ${color 303030}${font Ubuntu:size=14}  // ${color c0c0c0} ${time %H%M}${color 303030}${time .%S}
 
 ${font Ubuntu:size=7}
 @0,81    @+0,+-36 ${color 303030}${loadgraph 8,386}
