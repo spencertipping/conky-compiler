@@ -5,7 +5,7 @@ xftalpha 0.8
 text_buffer_size 2048
 
 temperature_unit fahrenheit
-update_interval 1
+update_interval 5
 update_interval_on_battery 4
 total_run_times 0
 
@@ -59,9 +59,10 @@ ${font Ubuntu:size=7}${color 303030}
 @756,79 ${color 606060}${swapbar 4,130}
 
 @1238,80 ${color c0c0c0}
-  @+0,+11 ${uptime_short}
+  @+0,+0  ${uptime_short}
   @+0,+11 ${fs_free /mnt/t9}
-  @+0,+11 ${loadavg 1}
+  @+0,+11 ${fs_free /mnt/t3}
+  @+0,+11 ${loadavg 1} ${loadavg 2} ${loadavg 3}
 
 @492,80
 @+0,+11 ${color 303030} ${diskiograph_read /dev/dm-0 8,122} @+126,+0 ${color 606060} ${diskio_read  /dev/dm-0} @+42,+0 ${color 303030} ${diskiograph_write /dev/dm-0 8,122} @+126,+0 ${color 606060} ${diskio_write /dev/dm-0} @+28,+0 ${color 606060} ${fs_free /}         @+-126,+0 @+-126,+0 @+-70,+0
