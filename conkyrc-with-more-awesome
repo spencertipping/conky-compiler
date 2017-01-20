@@ -51,7 +51,7 @@ use_spacer none
 TEXT
 ${font Ubuntu:size=12}${color 303030}
 @263,100 ${cpubar cpu1 4,122}  @+126,+0 ${cpubar cpu2 4,122}  @+126,+7  ${swapbar 4,80} @+-63,+7 ${color 303030}${membar 4,395}${color 303030}
-@263,107 ${cpubar cpu3 4,122}  @+126,+0 ${cpubar cpu4 4,122}  @+126,+0 @+84,+0 ${wireless_link_bar 4,80 wlan0}
+@263,107 ${cpubar cpu3 4,122}  @+126,+0 ${cpubar cpu4 4,122}  @+126,+0 @+84,+0 ${wireless_link_bar 4,80 wlp3s0}
 
 ${font Ubuntu:size=14}${color 606060}
 @348,100 @+168,+-54 @+168,+0 @+168,+0 @+42,+12 ${color 303030}${font Ubuntu:size=14}  // ${color c0c0c0} ${time %H%M}${color 303030}${time .%S}
@@ -98,8 +98,8 @@ ${color 303030}
 @+0,+-9 ${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_now}${color 303030} / ${color 606060}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_full} mWh
 
 @+126,100
-@+0,+-9  ${color c0c0c0}${wireless_essid wlan0}${color 606060} ${wireless_bitrate wlan0}
-@+0,+-9  ${color c0c0c0}${addr wlan0}${color 606060}
+@+0,+-9  ${color c0c0c0}${wireless_essid wlp3s0}${color 606060} ${wireless_bitrate wlp3s0}
+@+0,+-9  ${color c0c0c0}${addr wlp3s0}${color 606060}
 @+0,+-9  ${nameserver 0}
 @+0,+-9  ${gw_ip}
 @+0,+-18 ${color c0c0c0}@+-64,+-1${memgraph 8,228}@+64,+1${color 606060}
@@ -125,8 +125,8 @@ ${color 303030}
 @+0,+11 ${execi 5 sed 's/000$//' /sys/class/thermal/thermal_zone0/temp}C
 @+30,+0
 
-@+168,+-11 ${downspeedgraph wlan0 8,123} ${color 606060} @+126,+0 ${downspeed wlan0} @+42,+0 ${totaldown wlan0} @+-168,+0 ${color 303030}
-@+0,+11    ${upspeedgraph   wlan0 8,123} ${color 606060} @+126,+0 ${upspeed   wlan0} @+42,+0 ${totalup   wlan0} @+-168,+0 ${color 303030}
+@+168,+-11 ${downspeedgraph wlp3s0 8,123} ${color 606060} @+126,+0 ${downspeed wlp3s0} @+42,+0 ${totaldown wlp3s0} @+-168,+0 ${color 303030}
+@+0,+11    ${upspeedgraph   wlp3s0 8,123} ${color 606060} @+126,+0 ${upspeed   wlp3s0} @+42,+0 ${totalup   wlp3s0} @+-168,+0 ${color 303030}
 
 @263,111
 @+126,+0 ${font Ubuntu:size=7}${execi 5 wc -l < ~/r/persistent/self/queue}${font Ubuntu:size=14} ${execi 5 ls ~/.cd/mountpoints | wc -l} ${font Ubuntu:size=22}${execi 5 ~/bin/alerts | wc -l}
