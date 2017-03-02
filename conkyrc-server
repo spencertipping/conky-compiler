@@ -66,8 +66,7 @@ ${font Ubuntu:size=7}${color 303030}
 
 @492,80
 @+0,+11 ${color 303030} ${diskiograph_read /dev/dm-0 8,122} @+126,+0 ${color 606060} ${diskio_read  /dev/dm-0} @+42,+0 ${color 303030} ${diskiograph_write /dev/dm-0 8,122} @+126,+0 ${color 606060} ${diskio_write /dev/dm-0} @+28,+0 ${color 606060} ${fs_free /}         @+-126,+0 @+-126,+0 @+-70,+0
-@+0,+11 ${color 303030} ${diskiograph_read /dev/sda  8,122} @+126,+0 ${color 606060} ${diskio_read  /dev/sda}  @+42,+0 ${color 303030} ${diskiograph_write /dev/sda  8,122} @+126,+0 ${color 606060} ${diskio_write /dev/sda}  @+28,+0 ${color 606060} ${fs_free /mnt/t4.2} @+-126,+0 @+-126,+0 @+-70,+0
-@+0,+11 ${color 303030} ${diskiograph_read /dev/sdd  8,122} @+126,+0 ${color 606060} ${diskio_read  /dev/sdd}  @+42,+0 ${color 303030} ${diskiograph_write /dev/sdd  8,122} @+126,+0 ${color 606060} ${diskio_write /dev/sdd}  @+28,+0 ${color 606060} ${fs_free /mnt/t4.1} @+-126,+0 @+-126,+0 @+-70,+0
+@+0,+11                                                     @+126,+0                                           @+42,+0                                                      @+126,+0                                           @+28,+0 ${color 606060} ${fs_free /mnt/r51}  @+-126,+0 @+-126,+0 @+-70,+0
 
 @858,80
 @+0,+11 ${color 303030} ${downspeedgraph enp3s0f0 8,123} @+126,+0 ${color 606060} ${downspeed enp3s0f0} @+28,+0 ${totaldown enp3s0f0} @+42,+0 ${color 303030} ${upspeedgraph enp3s0f0 8,123} @+126,+0 ${color 606060} ${upspeed enp3s0f0} @+28,+0 ${totalup enp3s0f0} @+-126,+0 @+-126,+0 @+-56,+0 @+-42,+0
