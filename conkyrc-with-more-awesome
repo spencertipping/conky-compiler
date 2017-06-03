@@ -5,8 +5,8 @@ xftalpha 0.8
 text_buffer_size 2048
 
 temperature_unit fahrenheit
-update_interval 1
-update_interval_on_battery 4
+update_interval 4
+update_interval_on_battery 15
 total_run_times 0
 
 own_window yes
