@@ -1,0 +1,77 @@
+use_xft yes
+xftalpha 0.8
+text_buffer_size 2048
+
+temperature_unit fahrenheit
+update_interval 2
+update_interval_on_battery 15
+total_run_times 0
+
+own_window yes
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent no
+own_window_type override
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+double_buffer yes
+
+if_up_strictness link
+
+maximum_width 1432
+minimum_size 1432 240
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_width 1
+
+default_graph_size 400 16
+
+draw_graph_borders no
+short_units yes
+
+alignment bottom_right
+
+gap_x 0
+gap_y 0
+
+no_buffers yes
+
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+use_spacer none
+
+TEXT
+${font Jura:size=32}
+${color 404040}
+@0,42
+
+@+0,+-4    ${downspeedgraph wlp2s0 16,380}
+@+384,+0   ${upspeedgraph   wlp2s0 16,380}@+-384,+4
+
+@+0,+12    ${cpubar cpu1 8,188}@+192,+0 ${cpubar cpu2 8,188}
+  @+192,+0 ${cpubar cpu3 8,188}@+192,+0 ${cpubar cpu4 8,188}
+@+-576,+12 ${cpubar cpu5 8,188}@+192,+0 ${cpubar cpu6 8,188}
+  @+192,+0 ${cpubar cpu7 8,188}@+192,+0 ${cpubar cpu8 8,188}
+@+-576,+12
+@+192,+0   ${color 808080}@+0,+0              ${membar      8,840}
+           ${color 808080}@+384,+-12 @+384,+0 ${swapbar     8,72} @+-384,+0
+           ${color 303030}@+0,+24             ${battery_bar 8,860}
+@+-576,+-32
+@+1236,+0 ${color 707070}${alignr 100}${time %m%d}
+@+100,+0  ${color a0a0a0}${alignr 0}${time %H%M}
+
+@768,120 ${font Jura:size=16}${color c0c0c0}
+@+-96,+0
+@+0,+0   ${downspeed wlp2s0}
+@+96,+0  ${upspeed   wlp2s0}
+@+96,+0  ${diskio_read  /dev/nvme0n1}
+@+96,+0  ${diskio_write /dev/nvme0n1}
+
+@960,+4 ${color 303030}${loadgraph 16,422} @+0,+-4
+@+0,+0  ${color c0c0c0}${alignr 0}${loadavg 1}
