@@ -59,9 +59,11 @@ ${color 404040}
 @+-576,+12 ${cpubar cpu5 8,188}@+192,+0 ${cpubar cpu6 8,188}
   @+192,+0 ${cpubar cpu7 8,188}@+192,+0 ${cpubar cpu8 8,188}
 @+-576,+12
-@+192,+0   ${color 808080}@+0,+0              ${membar      8,840}
-           ${color 808080}@+384,+-12 @+384,+0 ${swapbar     8,72} @+-384,+0
-           ${color 303030}@+0,+24             ${battery_bar 8,860}
+@+192,+0
+  ${color 808080}@+0,+0              ${membar      8,840}
+                 @+384,+-12 @+384,+0 ${swapbar     8,72} @+-384,+0
+  ${if_match ${exec cat /sys/class/power_supply/AC/online} == 1}${color 303030}${else}${color 808080}${endif}
+                 @+0,+24             ${battery_bar 8,860}
 @+-576,+-32
 @+1236,+0 ${color 707070}${alignr 100}${time %m%d}
 @+100,+0  ${color a0a0a0}${alignr 0}${time %H%M}
@@ -75,3 +77,5 @@ ${color 404040}
 
 @960,124 @+72,+0 ${color 303030}${loadgraph 16,350 -l} @+-72,+-4
 @+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}
+
+@1236,+20${alignr 0}${battery_time}
