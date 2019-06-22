@@ -34,7 +34,7 @@ short_units yes
 alignment bottom_right
 
 gap_x 0
-gap_y 0
+gap_y -320
 
 no_buffers yes
 
@@ -51,8 +51,8 @@ ${font Jura:size=32}
 ${color 404040}
 @0,42
 
-@+0,+-4    ${downspeedgraph wlp2s0 16,380}
-@+384,+0   ${upspeedgraph   wlp2s0 16,380}@+-384,+4
+@+0,+-4    ${downspeedgraph wlp2s0 16,380 -l}
+@+384,+0   ${upspeedgraph   wlp2s0 16,380 -l}@+-384,+4
 
 @+0,+12    ${cpubar cpu1 8,188}@+192,+0 ${cpubar cpu2 8,188}
   @+192,+0 ${cpubar cpu3 8,188}@+192,+0 ${cpubar cpu4 8,188}
@@ -73,5 +73,5 @@ ${color 404040}
 @+96,+0  ${diskio_read  /dev/nvme0n1}
 @+96,+0  ${diskio_write /dev/nvme0n1}
 
-@960,+4 ${color 303030}${loadgraph 16,422} @+0,+-4
-@+0,+0  ${color c0c0c0}${alignr 0}${loadavg 1}
+@960,124 @+72,+0 ${color 303030}${loadgraph 16,350 -l} @+-72,+-4
+@+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}
