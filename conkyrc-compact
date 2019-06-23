@@ -65,8 +65,8 @@ ${color 404040}
   ${if_match ${exec cat /sys/class/power_supply/AC/online} == 1}${color 303030}${else}${color 808080}${endif}
                  @+0,+24             ${battery_bar 8,860}
 @+-576,+-32
-@+1236,+0 ${color 707070}${alignr 100}${time %m%d}
-@+100,+0  ${color a0a0a0}${alignr 0}${time %H%M}
+@+1216,+0 ${color 707070}${alignr 110}${time %m%d}
+@+110,+0  ${color a0a0a0}${alignr 0}${time %H%M}
 
 @768,120 ${font Jura:size=16}${color c0c0c0}
 @+-96,+0
@@ -75,7 +75,7 @@ ${color 404040}
 @+96,+0  ${diskio_read  /dev/nvme0n1}
 @+96,+0  ${diskio_write /dev/nvme0n1}
 
-@960,124 @+72,+0 ${color 303030}${loadgraph 16,350 -l} @+-72,+-4
+@960,124 @+72,+0 ${color 303030}${loadgraph 16,355 -l} @+-72,+-4
 @+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}
 
-@1236,+20${alignr 0}${battery_time}
+@1216,+20${alignr 0}${battery_time}
