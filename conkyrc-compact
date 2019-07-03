@@ -60,8 +60,8 @@ ${color 404040}
   @+192,+0 ${cpubar cpu7 8,188}@+192,+0 ${cpubar cpu8 8,188}
 @+-576,+12
 @+192,+0
-  ${color 808080}@+0,+0              ${membar      8,840}
-                 @+384,+-12 @+384,+0 ${swapbar     8,72} @+-384,+0
+  ${color 808080}@+0,+0                       ${membar  8,960}
+                 @+384,+-12 @+384,+0 @+120,+0 ${swapbar 8,72} @+-504,+0
   ${if_match ${exec cat /sys/class/power_supply/AC/online} == 1}${color 303030}${else}${color 808080}${endif}
                  @+0,+24             ${battery_bar 8,860}
 @+-576,+-32

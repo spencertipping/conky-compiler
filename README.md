@@ -29,7 +29,7 @@ I used for the screenshot).
 
 ## Bugs
 - Fails miserably if you use conky's conditionals in certain ways.
-- Some edge cases that happen if you change font sizes in the middle your
+- Some edge cases that happen if you change font sizes in the middle of your
   conkyrc. (These can usually be worked around by some relative adjustment.)
 - `conkyc` loses track of vertical space if you draw graphs/bars taller than
   the tallest font's line height. Ideally it would look for such commands and
