@@ -2,7 +2,7 @@ use_xft yes
 xftalpha 0.8
 text_buffer_size 2048
 
-temperature_unit fahrenheit
+temperature_unit celsius
 update_interval 2
 update_interval_on_battery 15
 total_run_times 0
@@ -72,8 +72,8 @@ ${color 404040}
 @+-96,+0
 @+0,+0   ${downspeed wlp2s0}
 @+96,+0  ${upspeed   wlp2s0}
-@+96,+0  ${diskio_read  /dev/nvme0n1}
-@+96,+0  ${diskio_write /dev/nvme0n1}
+@+96,+0  ${diskio_read  /dev/nvme0n1} @+0,+-46 ${fs_free /}  @+0,+46
+@+96,+0  ${diskio_write /dev/nvme0n1} @+0,+-46 ${hwmon 2 temp 1}°C @+0,+46
 
 @960,124 @+72,+0 ${color 303030}${loadgraph 16,355 -l} @+-72,+-4
 @+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}

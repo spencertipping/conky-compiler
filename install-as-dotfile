@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+whichone=${1:-conkyrc-compact}
+LINE_SPACING=1.24 ./conkyc conkyrc-compact > ~/.conkyrc
