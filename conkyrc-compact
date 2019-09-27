@@ -78,4 +78,5 @@ ${color 404040}
 @960,124 @+72,+0 ${color 303030}${loadgraph 16,355 -l} @+-72,+-4
 @+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}
 
-@1216,+20${alignr 0}${battery_time}
+@1216,+20${alignr 96}${battery_time}
+@+0,+0${alignr 0}${exec sed s/000$// /sys/class/power_supply/BAT0/current_now}mA
