@@ -51,8 +51,8 @@ ${font Jura:size=32}
 ${color 404040}
 @0,42
 
-@+0,+-4    ${downspeedgraph wlp2s0 16,380 -l}
-@+384,+0   ${upspeedgraph   wlp2s0 16,380 -l}@+-384,+4
+@+0,+-4    ${downspeedgraph wlp0s20f3 16,380 -l}
+@+384,+0   ${upspeedgraph   wlp0s20f3 16,380 -l}@+-384,+4
 
 @+0,+12    ${cpubar cpu1 8,188}@+192,+0 ${cpubar cpu2 8,188}
   @+192,+0 ${cpubar cpu3 8,188}@+192,+0 ${cpubar cpu4 8,188}
@@ -70,14 +70,14 @@ ${color 404040}
 
 @768,120 ${font Jura:size=16}${color c0c0c0}
 @+-96,+0
-@+0,+0   ${downspeed wlp2s0}
-@+96,+0  ${upspeed   wlp2s0}
+@+0,+0   ${downspeed wlp0s20f3}
+@+96,+0  ${upspeed   wlp0s20f3}
 @+96,+0  ${diskio_read  /dev/nvme0n1} @+0,+-46 ${fs_free /}        @+0,+46
-@+96,+0  ${diskio_write /dev/nvme0n1} @+0,+-46 ${hwmon 4 temp 1}°C @+0,+46
+@+96,+0  ${diskio_write /dev/nvme0n1} @+0,+-46 ${hwmon 1 temp 1}°C @+0,+46
 
 @+-96,+-78
-@+216,+0 ${color f0f0f0}${wireless_essid wlp2s0} ${color c0c0c0}${wireless_link_qual_perc wlp2s0}%
-@+128,+0 ${color 909090}${alignr 0}${wireless_ap wlp2s0}
+@+216,+0 ${color f0f0f0}${wireless_essid wlp0s20f3} ${color c0c0c0}${wireless_link_qual_perc wlp0s20f3}%
+@+128,+0 ${color 909090}${alignr 0}${wireless_ap wlp0s20f3}
 
 @960,124 @+72,+0 ${color 303030}${loadgraph 16,355 -l} @+-72,+-4
 @+0,+0   ${color c0c0c0}${alignr 0}${loadavg 1}
