@@ -76,7 +76,7 @@ ${color 404040}
 @+96,+0  ${diskio_write /dev/nvme0n1} @+0,+-46 ${hwmon 1 temp 1}°C @+0,+46
 
 @+-96,+-78
-@+216,+0 ${color f0f0f0}${alignr 284}${wireless_essid wlp0s20f3} ${color c0c0c0}${wireless_link_qual_perc wlp0s20f3}%
+@+216,+0 ${color f0f0f0}${alignr 284}${wireless_essid wlp0s20f3} ${color c0c0c0}${wireless_bitrate wlp0s20f3}
 @+128,+0 ${color 909090}${alignr 0}${wireless_ap wlp0s20f3}
 
 @960,124 @+72,+0 ${color 303030}${loadgraph 16,355 -l} @+-72,+-4
